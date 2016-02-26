@@ -1,5 +1,6 @@
 package com.lwk.springboot.conf;
 
+import com.lwk.springboot.fremarker.tag.LwkTestTag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,9 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 该配置类 类似于mvc配置文件:spring_mvc.xml
@@ -37,8 +41,13 @@ public class WebMvcConfig {
 
     @Bean
     public FreeMarkerConfigurer getFreeMarkerConfigurer(){
+        Map map=new HashMap();
+        map.put("mamadan",new LwkTestTag());
+
         FreeMarkerConfigurer freeMarkerConfigurer=new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/");
+        freeMarkerConfigurer.setDefaultEncoding("utf-8");
+        freeMarkerConfigurer.setFreemarkerVariables(map);//设置自定义模板
         return freeMarkerConfigurer;
     }
 

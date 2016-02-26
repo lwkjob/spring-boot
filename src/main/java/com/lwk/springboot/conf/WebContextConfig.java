@@ -1,5 +1,6 @@
 package com.lwk.springboot.conf;
 
+import com.lwk.springboot.commandLineRunner.StartupRunner;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -43,5 +44,10 @@ public class WebContextConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(getDataSource());
         return sqlSessionFactory.getObject();
+    }
+
+    @Bean
+    public StartupRunner schedulerRunner() {
+        return new StartupRunner();
     }
 }

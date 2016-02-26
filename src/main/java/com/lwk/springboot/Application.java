@@ -13,6 +13,9 @@ import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfigura
 public class Application {
 //    main方法作为程序入口，启动spring程序
     public static void main(String[] args) {
+
         SpringApplication.run(Application.class, args);
     }
+
+
 }
