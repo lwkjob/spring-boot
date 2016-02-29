@@ -39,6 +39,11 @@ public class HttpResponseLwk extends HttpServletResponseWrapper {
         return tmpWriter;
     }
 
+    @Override
+    public ServletOutputStream getOutputStream() throws IOException {
+        return super.getOutputStream();
+    }
+
     public void close() throws IOException {
         tmpWriter.close();
     }

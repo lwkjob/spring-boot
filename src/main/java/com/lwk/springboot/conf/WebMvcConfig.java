@@ -1,16 +1,23 @@
 package com.lwk.springboot.conf;
 
+import com.lwk.springboot.controller.Filter;
 import com.lwk.springboot.fremarker.tag.LwkTestTag;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+import org.springframework.boot.context.embedded.ErrorPage;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 该配置类 类似于mvc配置文件:spring_mvc.xml
@@ -39,15 +46,23 @@ public class WebMvcConfig {
         return resolver;
     }
 
+    //自定义拦截器
+    @Bean
+    public Filter filter(){
+        return new Filter();
+    }
+
+
+
     @Bean
     public FreeMarkerConfigurer getFreeMarkerConfigurer(){
         Map map=new HashMap();
-        map.put("mamadan",new LwkTestTag());
+        map.put("mamadan",new LwkTestTag());//设置自定义标签 1
 
         FreeMarkerConfigurer freeMarkerConfigurer=new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/");
         freeMarkerConfigurer.setDefaultEncoding("utf-8");
-        freeMarkerConfigurer.setFreemarkerVariables(map);//设置自定义模板
+        freeMarkerConfigurer.setFreemarkerVariables(map);//设置自定义标签 2
         return freeMarkerConfigurer;
     }
 

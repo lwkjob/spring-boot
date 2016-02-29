@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.sql.DataSource;
 
@@ -21,6 +22,16 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "com.lwk.springboot.dao")
 @ComponentScan(basePackages = "com.lwk.springboot")
 public class WebContextConfig {
+
+
+
+    @Bean
+    public CharacterEncodingFilter FiltercharacterEncodingFilter() {
+        CharacterEncodingFilter characterEncodingFilter =new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return characterEncodingFilter;
+    }
 
     @Bean
     public DataSource getDataSource() {

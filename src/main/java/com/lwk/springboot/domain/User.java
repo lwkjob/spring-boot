@@ -1,8 +1,15 @@
 package com.lwk.springboot.domain;
 
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class User {
+
+
     private String name;
+
     private int age;
 
     public String getName() {

@@ -8,6 +8,6 @@ public class StartupRunner implements CommandLineRunner {
     protected final Logger logger = LoggerFactory.getLogger(StartupRunner.class);
     @Override
     public void run(String... strings) throws Exception {
-        logger.info("hello");
+        logger.info("hello  CommandLineRunner"); //todo 中文有问题
     }
 }
