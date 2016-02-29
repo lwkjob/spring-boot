@@ -60,7 +60,7 @@ public class WebMvcConfig {
         map.put("mamadan",new LwkTestTag());//设置自定义标签 1
 
         FreeMarkerConfigurer freeMarkerConfigurer=new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/");
+        freeMarkerConfigurer.setTemplateLoaderPaths("classpath:/template/views/");//classpath必须写，否则找不到文件
         freeMarkerConfigurer.setDefaultEncoding("utf-8");
         freeMarkerConfigurer.setFreemarkerVariables(map);//设置自定义标签 2
         return freeMarkerConfigurer;

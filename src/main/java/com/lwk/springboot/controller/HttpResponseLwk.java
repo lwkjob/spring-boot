@@ -7,7 +7,7 @@ import java.io.*;
 
 /**
  * http://blog.csdn.net/shuwei003/article/details/7986158
- * Created by R9L4H0W on 2016/2/26.
+ *  todo 自定义response数据拦截
  */
 public class HttpResponseLwk extends HttpServletResponseWrapper {
 
